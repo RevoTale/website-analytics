@@ -52,7 +52,10 @@ jobs:
         id: push
         uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
         with:
-          context: .
+          context: ./umami-2.17.0
+          build-args: |
+            BASE_PATH=/stats
+            DATABASE_TYPE=postgres
           push: true
           platforms: linux/amd64,linux/arm64
           tags: ${{ steps.meta.outputs.tags }}
